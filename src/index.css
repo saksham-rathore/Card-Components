@@ -125,3 +125,25 @@ body {
   0%, 100% { box-shadow: 0 0 0 rgba(108, 61, 255, 0); }
   50% { box-shadow: 0 0 10px rgba(108, 61, 255, 0.4); }
 }
+
+.shine-overlay {
+  background: linear-gradient(
+    45deg,
+    transparent 20%,
+    rgba(255, 255, 255, 0.3) 50%,
+    transparent 80%
+  );
+  background-size: 200% 200%;
+  animation: shine-sweep 3s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes shine-sweep {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Ensure child elements respect parent rounding */
+.rounded-\[32px\] {
+  border-radius: 32px;
+}
