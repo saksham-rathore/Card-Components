@@ -147,3 +147,280 @@ body {
 .rounded-\[32px\] {
   border-radius: 32px;
 }
+
+
+  /* Holographic animated gradient — canvas-free pure CSS */
+  @keyframes holoMove {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  @keyframes holoRotate {
+    0%   { transform: rotate(0deg) scale(1.4); }
+    100% { transform: rotate(360deg) scale(1.4); }
+  }
+  @keyframes holoFade {
+    0%,100% { opacity: 0.75; }
+    50%      { opacity: 1; }
+  }
+  @keyframes slideUp {
+    0%   { opacity:0; transform: translateY(30px); }
+    100% { opacity:1; transform: translateY(0); }
+  }
+  @keyframes logoBounce {
+    0%   { opacity:0; transform: scale(0.5); }
+    65%  { transform: scale(1.15); }
+    100% { opacity:1; transform: scale(1); }
+  }
+  @keyframes btnFade {
+    0%   { opacity:0; transform: translateY(16px); }
+    100% { opacity:1; transform: translateY(0); }
+  }
+  @keyframes shimmer {
+    0%   { transform: translateX(-120%) skewX(-15deg); }
+    100% { transform: translateX(400%) skewX(-15deg); }
+  }
+  @keyframes waveFloat {
+    0%,100% { transform: translateY(0px) rotate(0deg); }
+    33%     { transform: translateY(-12px) rotate(1.5deg); }
+    66%     { transform: translateY(8px) rotate(-1deg); }
+  }
+  @keyframes waveFloat2 {
+    0%,100% { transform: translateY(0px) rotate(0deg) scaleX(-1); }
+    33%     { transform: translateY(10px) rotate(-1deg) scaleX(-1); }
+    66%     { transform: translateY(-8px) rotate(1deg) scaleX(-1); }
+  }
+ 
+  .holo-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(1px);
+    mix-blend-mode: screen;
+    animation: holoRotate 14s linear infinite, holoFade 5s ease-in-out infinite;
+  }
+  .holo-bg {
+    background: linear-gradient(
+      125deg,
+      #ff9de2, #ffc3a0, #ffee93,
+      #c3ffd8, #a8edff, #c8b4ff,
+      #ffb3e6, #ff9de2
+    );
+    background-size: 400% 400%;
+    animation: holoMove 8s ease infinite;
+  }
+  .wave-svg {
+    filter: blur(0.5px);
+  }
+  .logo-svg {
+    animation: logoBounce 0.7s cubic-bezier(0.16,1,0.3,1) 0.4s both;
+  }
+  .text-block { animation: slideUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.7s both; }
+  .btn-row    { animation: btnFade 0.7s cubic-bezier(0.16,1,0.3,1) 1s both; }
+ 
+  .btn-shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-shimmer::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 40%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.45), transparent);
+    animation: shimmer 2.8s ease-in-out infinite 1.5s;
+  }
+
+  @keyframes fadeUp {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  @keyframes countUp {
+    0% { opacity: 0; transform: translateY(8px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes pricePulse {
+    0%, 100% { color: #111827; }
+    50% { color: #2563eb; }
+  }
+  @keyframes dotBlink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.2; }
+  }
+  @keyframes slideRight {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(0); }
+  }
+  @keyframes barGrow {
+    0% { transform: scaleY(0); }
+    100% { transform: scaleY(1); }
+  }
+
+  .animate-fadeUp { animation: fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) both; }
+  .animate-fadeIn { animation: fadeIn 0.6s ease both; }
+  .animate-countUp { animation: countUp 0.8s cubic-bezier(0.16,1,0.3,1) both; }
+  .animate-dotBlink { animation: dotBlink 1.8s ease-in-out infinite; }
+  .animate-barGrow { animation: barGrow 1s cubic-bezier(0.16,1,0.3,1) both; }
+
+  .animate-waveFloat { animation: waveFloat 9s ease-in-out infinite; }
+  .animate-waveFloat2 { animation: waveFloat2 11s ease-in-out infinite; }
+
+
+/* SVG line draw animation */
+  @keyframes drawLine {
+    from { stroke-dashoffset: 1200; }
+    to   { stroke-dashoffset: 0; }
+  }
+  @keyframes fillFade {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+  @keyframes tooltipPop {
+    0%  { opacity:0; transform: scale(0.85) translateY(8px); }
+    100%{ opacity:1; transform: scale(1) translateY(0); }
+  }
+  @keyframes slideUp {
+    from { opacity:0; transform:translateY(18px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+  @keyframes miniDraw {
+    from { stroke-dashoffset: 300; }
+    to   { stroke-dashoffset: 0; }
+  }
+  @keyframes glowPulse {
+    0%,100% { box-shadow: 0 0 0 0 rgba(37,99,235,0); }
+    50%     { box-shadow: 0 0 0 6px rgba(37,99,235,0.12); }
+  }
+  .chart-line {
+    stroke-dasharray: 1200;
+    stroke-dashoffset: 1200;
+    animation: drawLine 2.2s cubic-bezier(0.4,0,0.2,1) 0.4s forwards;
+  }
+  .chart-fill {
+    opacity: 0;
+    animation: fillFade 1s ease 1.8s forwards;
+  }
+  .tooltip-pop {
+    animation: tooltipPop 0.5s cubic-bezier(0.16,1,0.3,1) 2.2s both;
+  }
+  .mini-line {
+    stroke-dasharray: 300;
+    stroke-dashoffset: 300;
+    animation: miniDraw 1.4s cubic-bezier(0.4,0,0.2,1) both;
+  }
+  .row-anim { animation: slideUp 0.5s cubic-bezier(0.16,1,0.3,1) both; }
+  .row-anim:nth-child(1) { animation-delay: 0.8s; }
+  .row-anim:nth-child(2) { animation-delay: 1.0s; }
+  .row-anim:nth-child(3) { animation-delay: 1.2s; }
+  .row-anim:nth-child(4) { animation-delay: 1.4s; }
+ 
+  .place-btn { animation: glowPulse 2.5s ease-in-out infinite; }
+ 
+  /* Hover sparkline highlight */
+  .coin-row:hover { background: #f0f7ff; transition: background 0.15s; }
+  .coin-row:hover .mini-sparkline { filter: drop-shadow(0 0 3px rgba(37,99,235,0.4)); }
+ 
+  /* Tab active */
+  .tab-active { background:#fff; box-shadow: 0 1px 4px rgba(0,0,0,0.1); }
+ 
+  /* Period btn */
+  .period-btn { transition: all 0.15s; }
+  .period-btn.active { background:#2563eb; color:#fff; }
+ 
+  /* Scrollbar */
+  ::-webkit-scrollbar { width:4px; }
+  ::-webkit-scrollbar-track { background:transparent; }
+  ::-webkit-scrollbar-thumb { background:#d1d5db; border-radius:4px; }      
+
+
+    tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ink:     '#0e0e10',
+          pale:    '#f5f2ee',
+          mid:     '#c8c0b4',
+          accent:  '#d4501a',
+          accent2: '#2a5c8f',
+          accent3: '#4a9970',
+        },
+        fontFamily: {
+          serif: ['"DM Serif Display"', 'serif'],
+          sans:  ['"DM Sans"', 'sans-serif'],
+        },
+        animation: {
+          'fade-up-0':  'fadeUp .8s ease both',
+          'fade-up-1':  'fadeUp .8s .15s ease both',
+          'fade-up-2':  'fadeUp .8s .3s ease both',
+          'fade-up-3':  'fadeUp .8s .45s ease both',
+          'fade-up-4':  'fadeUp .8s .7s ease both',
+          'scroll-pulse': 'scrollPulse 2s ease-in-out infinite',
+          'rotate-slow':  'rotateSlow 40s linear infinite',
+          'float-a':      'floatA 7s ease-in-out infinite',
+          'float-b':      'floatB 9s ease-in-out infinite',
+          'float-c':      'floatC 11s ease-in-out infinite',
+          'dash-draw':    'dashDraw 2.5s .5s ease forwards',
+          'dash-draw-2':  'dashDraw 2.5s .9s ease forwards',
+        },
+        keyframes: {
+          fadeUp: {
+            from: { opacity: '0', transform: 'translateY(24px)' },
+            to:   { opacity: '1', transform: 'translateY(0)' },
+          },
+          scrollPulse: {
+            '0%,100%': { opacity: '.3', transform: 'scaleY(1)' },
+            '50%':      { opacity: '1',  transform: 'scaleY(1.15)' },
+          },
+          rotateSlow: { to: { transform: 'rotate(360deg)' } },
+          floatA: {
+            '0%,100%': { transform: 'translateY(0) rotate(0deg)' },
+            '50%':     { transform: 'translateY(-30px) rotate(8deg)' },
+          },
+          floatB: {
+            '0%,100%': { transform: 'translateY(0) scale(1)' },
+            '60%':     { transform: 'translateY(20px) scale(1.06)' },
+          },
+          floatC: {
+            '0%,100%': { transform: 'translate(0,0)' },
+            '40%':     { transform: 'translate(-18px, 14px)' },
+            '70%':     { transform: 'translate(12px, -10px)' },
+          },
+          dashDraw: {
+            from: { strokeDashoffset: '900' },
+            to:   { strokeDashoffset: '0' },
+          },
+          particleDrift: {
+            '0%':   { transform: 'translate(0,0) scale(1)', opacity: '.7' },
+            '100%': { transform: 'translate(var(--dx), var(--dy)) scale(.4)', opacity: '0' },
+          },
+        },
+        fontSize: {
+          '2xs': ['10px', { letterSpacing: '.14em' }],
+          'xxs': ['11px', { letterSpacing: '.18em' }],
+        },
+        maxWidth: {
+          '7xl': '80rem',
+        },
+      }
+    }
+  }
+
+  /* Keyframes that Tailwind can't express inline */
+  @keyframes particleDrift {
+    0%   { transform: translate(0,0) scale(1); opacity: .7; }
+    100% { transform: translate(var(--dx), var(--dy)) scale(.4); opacity: 0; }
+  }
+  /* Card reveal state — toggled by JS */
+  .card { opacity: 0; transform: translateY(30px); transition: opacity .6s ease, transform .6s ease, background .3s; }
+  .card.visible { opacity: 1; transform: translateY(0); }
+  .card:hover { background: rgba(255,255,255,.06); }
+ 
+  /* Clamp font sizes (not natively in Tailwind CDN) */
+  .text-hero   { font-size: clamp(3rem, 8vw, 7.5rem); line-height: .95; letter-spacing: -.02em; }
+  .text-section{ font-size: clamp(2rem, 4vw, 3.5rem); line-height: 1.1; }
+  .text-stat   { font-size: clamp(2.5rem, 5vw, 5rem); line-height: 1; }
+  .text-cta    { font-size: clamp(2rem, 5vw, 4rem); line-height: 1.1; }
