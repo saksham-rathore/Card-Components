@@ -337,77 +337,70 @@ body {
   ::-webkit-scrollbar-thumb { background:#d1d5db; border-radius:4px; }      
 
 
-    tailwind.config = {
-    theme: {
-      extend: {
-        colors: {
-          ink:     '#0e0e10',
-          pale:    '#f5f2ee',
-          mid:     '#c8c0b4',
-          accent:  '#d4501a',
-          accent2: '#2a5c8f',
-          accent3: '#4a9970',
-        },
-        fontFamily: {
-          serif: ['"DM Serif Display"', 'serif'],
-          sans:  ['"DM Sans"', 'sans-serif'],
-        },
-        animation: {
-          'fade-up-0':  'fadeUp .8s ease both',
-          'fade-up-1':  'fadeUp .8s .15s ease both',
-          'fade-up-2':  'fadeUp .8s .3s ease both',
-          'fade-up-3':  'fadeUp .8s .45s ease both',
-          'fade-up-4':  'fadeUp .8s .7s ease both',
-          'scroll-pulse': 'scrollPulse 2s ease-in-out infinite',
-          'rotate-slow':  'rotateSlow 40s linear infinite',
-          'float-a':      'floatA 7s ease-in-out infinite',
-          'float-b':      'floatB 9s ease-in-out infinite',
-          'float-c':      'floatC 11s ease-in-out infinite',
-          'dash-draw':    'dashDraw 2.5s .5s ease forwards',
-          'dash-draw-2':  'dashDraw 2.5s .9s ease forwards',
-        },
-        keyframes: {
-          fadeUp: {
-            from: { opacity: '0', transform: 'translateY(24px)' },
-            to:   { opacity: '1', transform: 'translateY(0)' },
-          },
-          scrollPulse: {
-            '0%,100%': { opacity: '.3', transform: 'scaleY(1)' },
-            '50%':      { opacity: '1',  transform: 'scaleY(1.15)' },
-          },
-          rotateSlow: { to: { transform: 'rotate(360deg)' } },
-          floatA: {
-            '0%,100%': { transform: 'translateY(0) rotate(0deg)' },
-            '50%':     { transform: 'translateY(-30px) rotate(8deg)' },
-          },
-          floatB: {
-            '0%,100%': { transform: 'translateY(0) scale(1)' },
-            '60%':     { transform: 'translateY(20px) scale(1.06)' },
-          },
-          floatC: {
-            '0%,100%': { transform: 'translate(0,0)' },
-            '40%':     { transform: 'translate(-18px, 14px)' },
-            '70%':     { transform: 'translate(12px, -10px)' },
-          },
-          dashDraw: {
-            from: { strokeDashoffset: '900' },
-            to:   { strokeDashoffset: '0' },
-          },
-          particleDrift: {
-            '0%':   { transform: 'translate(0,0) scale(1)', opacity: '.7' },
-            '100%': { transform: 'translate(var(--dx), var(--dy)) scale(.4)', opacity: '0' },
-          },
-        },
-        fontSize: {
-          '2xs': ['10px', { letterSpacing: '.14em' }],
-          'xxs': ['11px', { letterSpacing: '.18em' }],
-        },
-        maxWidth: {
-          '7xl': '80rem',
-        },
-      }
-    }
+@theme {
+  --color-ink: #0e0e10;
+  --color-pale: #f5f2ee;
+  --color-mid: #c8c0b4;
+  --color-accent: #d4501a;
+  --color-accent2: #2a5c8f;
+  --color-accent3: #4a9970;
+
+  --font-serif: "DM Serif Display", serif;
+  --font-sans: "DM Sans", sans-serif;
+
+  --animate-fade-up-0: fadeUp 0.8s ease both;
+  --animate-fade-up-1: fadeUp 0.8s 0.15s ease both;
+  --animate-fade-up-2: fadeUp 0.8s 0.3s ease both;
+  --animate-fade-up-3: fadeUp 0.8s 0.45s ease both;
+  --animate-fade-up-4: fadeUp 0.8s 0.7s ease both;
+  --animate-scroll-pulse: scrollPulse 2s ease-in-out infinite;
+  --animate-rotate-slow: rotateSlow 40s linear infinite;
+  --animate-float-a: floatA 7s ease-in-out infinite;
+  --animate-float-b: floatB 9s ease-in-out infinite;
+  --animate-float-c: floatC 11s ease-in-out infinite;
+  --animate-dash-draw: dashDraw 2.5s 0.5s ease forwards;
+  --animate-dash-draw-2: dashDraw 2.5s 0.9s ease forwards;
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
   }
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; transform: scaleY(1); }
+    50% { opacity: 1; transform: scaleY(1.15); }
+  }
+  @keyframes rotateSlow {
+    to { transform: rotate(360deg); }
+  }
+  @keyframes floatA {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-30px) rotate(8deg); }
+  }
+  @keyframes floatB {
+    0%, 100% { transform: translateY(0) scale(1); }
+    60% { transform: translateY(20px) scale(1.06); }
+  }
+  @keyframes floatC {
+    0%, 100% { transform: translate(0, 0); }
+    40% { transform: translate(-18px, 14px); }
+    70% { transform: translate(12px, -10px); }
+  }
+  @keyframes dashDraw {
+    from { stroke-dashoffset: 900; }
+    to { stroke-dashoffset: 0; }
+  }
+  @keyframes particleDrift {
+    0% { transform: translate(0, 0) scale(1); opacity: 0.7; }
+    100% { transform: translate(var(--dx), var(--dy)) scale(0.4); opacity: 0; }
+  }
+}
+
+.bg-ink { background-color: var(--color-ink); }
+.text-pale { color: var(--color-pale); }
+.text-mid { color: var(--color-mid); }
+.bg-accent { background-color: var(--color-accent); }
+.text-accent { color: var(--color-accent); }
+
 
   /* Keyframes that Tailwind can't express inline */
   @keyframes particleDrift {
